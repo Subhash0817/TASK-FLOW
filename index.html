@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Task Flow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <main class="app" aria-label="Task Flow">
+    <header class="header">
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <div class="title-area">
+        <p class="eyebrow">Daily productivity</p>
+        <h1 class="logo">Task<span>Flow</span></h1>
+        <p class="subtitle">Organize tasks. Stay focused. Build momentum.</p>
+      </div>
+      <section class="stats-grid" aria-label="Task statistics">
+        <div class="stat-card">
+          <span id="taskCount" class="stat-num">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-card">
+          <span id="completedCount" class="stat-num">0</span>
+          <span class="stat-label">Done</span>
+        </div>
+        <div class="stat-card">
+  <span id="activeCount" class="stat-num">0</span>
+  <span class="stat-label">Active</span>
+</div>
+      <div class="stat-card goal-card">
+    <label for="dailyGoal">🎯 Goal</label>
+    <input
+        type="number"
+        id="dailyGoal"
+        min="1"
+        max="20"
+        value="3"
+    >
+</div>
+      <div class="stat-card">
+    <span id="streakCount" class="stat-number">0</span>
+    <span class="stat-label">🔥 Streak</span>
+</div>
+      </section>
+
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span>Progress</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+      </div>
+    </header>
+    <section class="input-area" aria-label="Add task form">
+      <div class="input-row">
+        <input type="text" id="taskInput" placeholder="Add a new task..." autocomplete="off" />
+        <button id="addBtn" class="add-btn" type="button">+ Add</button>
+      </div>
+
+      <div class="options-row">
+        <select id="priority" class="priority-select" aria-label="Select priority">
+          <option value="low">Low Priority</option>
+          <option value="medium">Medium Priority</option>
+          <option value="high">High Priority</option>
+        </select>
+
+        <input type="date" id="dueDate" class="date-input" aria-label="Choose due date" />
+      </div>
+    </section>
+
+    <nav class="filter-tabs" aria-label="Task filters">
+      <button class="tab active" type="button" data-filter="all">All</button>
+      <button class="tab" type="button" data-filter="active">Active</button>
+      <button class="tab" type="button" data-filter="completed">Completed</button>
+    </nav>
+
+    <ul id="taskList" class="task-list" aria-label="Task list"></ul>
+
+    <section id="emptyState" class="empty-state">
+      <div class="empty-icon">📋</div>
+      <h2>No tasks yet</h2>
+      <p>Add your first task and start organizing your day.</p>
+    </section>
+
+    <footer class="footer-actions">
+      <button id="clearBtn" class="btn-danger" type="button">Clear All</button>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Task added</div>
+  <script src="script.js"></script>
+</body>
+</html>
