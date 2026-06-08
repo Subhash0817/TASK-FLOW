@@ -560,3 +560,148 @@ select:focus {
     background: rgba(255,255,255,0.08);
     color: inherit;
 }
+.stat-icon {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  display: block;
+}
+.edit-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-wrap {
+  margin: 1rem 0;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: #4caf50;
+}
+.search-empty {
+  text-align: center;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.hide {
+  display: none;
+}
+.highlight {
+  background: rgba(255, 220, 100, 0.4);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.modal-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+.category-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.category-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.category-pill.Study {
+  background: rgba(59,130,246,0.15);
+}
+
+.category-pill.Fitness {
+  background: rgba(34,197,94,0.15);
+}
+
+.category-pill.Work {
+  background: rgba(249,115,22,0.15);
+}
+
+.category-pill.Personal {
+  background: rgba(168,85,247,0.15);
+}
+
+.category-pill.Gaming {
+  background: rgba(239,68,68,0.15);
+}
+.task-card {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.task-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.custom-check {
+  transition: transform 0.2s ease;
+}
+
+.task-card:hover .custom-check {
+  transform: scale(1.15);
+}

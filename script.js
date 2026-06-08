@@ -1,5 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
+let editingTask = null;
+let searchText = ""; 
 
 const themeBtn = document.getElementById("themeBtn");
 const progressText = document.getElementById("progressText");
@@ -17,7 +19,13 @@ const emptyState = document.getElementById("emptyState");
 const toast = document.getElementById("toast");
 const tabs = document.querySelectorAll(".tab");
 const dailyGoalInput = document.getElementById("dailyGoal");
-
+const searchInput = document.getElementById("searchInput");
+const searchEmpty = document.getElementById("searchEmpty");
+const editModal = document.getElementById("editModal");
+const editInput = document.getElementById("editInput");
+const saveEdit = document.getElementById("saveEdit");
+const cancelEdit = document.getElementById("cancelEdit");
+const categoryInput = document.getElementById("category");
 
 function saveGoal() {
   localStorage.setItem(
@@ -126,21 +134,37 @@ function formatDate(dateValue) {
 }
 
 function getFilteredTasks() {
+
+  let filteredTasks = tasks;
+
   if (currentFilter === "active") {
-    return tasks.filter(function (task) {
-      return !task.completed;
-    });
+    filteredTasks = filteredTasks.filter(
+      function (task) {
+        return !task.completed;
+      }
+    );
   }
 
   if (currentFilter === "completed") {
-    return tasks.filter(function (task) {
-      return task.completed;
-    });
+    filteredTasks = filteredTasks.filter(
+      function (task) {
+        return task.completed;
+      }
+    );
   }
 
-  return tasks;
-}
+  if (searchText !== "") {
+    filteredTasks = filteredTasks.filter(
+      function (task) {
+        return task.text
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+      }
+    );
+  }
 
+  return filteredTasks;
+}
 function updateStats() {
   const total = tasks.length;
 
@@ -178,9 +202,20 @@ function createTaskElement(task) {
     <div class="task-content">
       <p class="task-title"></p>
       <div class="task-meta">
-        <span class="priority-pill ${task.priority}">${task.priority}</span>
-        <span class="due-date">${formatDate(task.dueDate)}</span>
-      </div>
+
+    <span class="category-pill ${task.category}">
+    ${task.category}
+  </span>
+
+  <span class="priority-pill ${task.priority}">
+    ${task.priority}
+  </span>
+
+  <span class="due-date">
+    ${formatDate(task.dueDate)}
+  </span>
+
+</div>
     </div>
 
    <div class="task-actions">
@@ -189,7 +224,27 @@ function createTaskElement(task) {
 </div>
   `;
 
-  li.querySelector(".task-title").textContent = task.text;
+  const taskTitle =
+  li.querySelector(".task-title");
+
+if (searchText !== "") {
+
+  const regex = new RegExp(
+    `(${searchText})`,
+    "gi"
+  );
+
+  taskTitle.innerHTML =
+    task.text.replace(
+      regex,
+      '<span class="highlight">$1</span>'
+    );
+
+} else {
+
+  taskTitle.textContent = task.text;
+
+}
 
   const checkbox = li.querySelector("input");
   const deleteBtn = li.querySelector(".delete-btn");
@@ -212,27 +267,21 @@ checkbox.addEventListener("change", function () {
       : "Task marked active"
   );
 });
-  editBtn.addEventListener("click", function () {
+editBtn.addEventListener(
+  "click",
+  function () {
 
-  const updatedText = prompt(
-    "Edit task:",
-    task.text
-  );
+    editingTask = task;
 
-  if (
-    updatedText === null ||
-    updatedText.trim() === ""
-  ) {
-    return;
+    editInput.value = task.text;
+
+    editModal.classList.remove(
+      "hide"
+    );
+
+    editInput.focus();
   }
-
-  task.text = updatedText.trim();
-
-  saveTasks();
-  renderTasks();
-  showToast("Task updated");
-
-});
+);
   deleteBtn.addEventListener("click", function () {
     tasks = tasks.filter(function (item) {
       return item.id !== task.id;
@@ -250,6 +299,14 @@ function renderTasks() {
   taskList.innerHTML = "";
 
   const filteredTasks = getFilteredTasks();
+  if (
+  filteredTasks.length === 0 &&
+  searchText !== ""
+) {
+  searchEmpty.classList.remove("hide");
+} else {
+  searchEmpty.classList.add("hide");
+}
 
   filteredTasks.forEach(function (task) {
     taskList.appendChild(createTaskElement(task));
@@ -273,6 +330,7 @@ function addTask() {
     id: Date.now(),
     text: taskText,
     priority: priorityInput.value,
+    category: categoryInput.value,
     dueDate: dueDateInput.value,
     completed: false
   };
@@ -336,6 +394,53 @@ dailyGoalInput.addEventListener(
   "change",
   saveGoal
 );
+
+searchInput.addEventListener(
+  "input",
+  function () {
+
+    searchText = searchInput.value;
+
+    renderTasks();
+  }
+);
+
+saveEdit.addEventListener(
+  "click",
+  function () {
+
+    const updatedText =
+      editInput.value.trim();
+
+    if (updatedText === "") {
+      return;
+    }
+
+    editingTask.text =
+      updatedText;
+
+    saveTasks();
+    renderTasks();
+
+    editModal.classList.add(
+      "hide"
+    );
+
+    showToast(
+      "Task updated"
+    );
+  }
+);
+cancelEdit.addEventListener(
+  "click",
+  function () {
+
+    editModal.classList.add(
+      "hide"
+    );
+  }
+);
+
 loadTheme();
 loadGoal();
 loadStats();
