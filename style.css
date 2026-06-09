@@ -14,33 +14,8 @@
 * {
   box-sizing: border-box;
 }
-.logo {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-.logo {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-}
 
-.logo {
-    color: #c17a3f;
-}
-
-.logo span {
-    color: #6fa67a;
-}
-.logo {
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.logo:hover {
-    transform: scale(1.08);
-}
+/* ── Body & Layout ── */
 body {
   min-height: 100vh;
   margin: 0;
@@ -56,12 +31,12 @@ body {
   transition: background 0.35s ease, color 0.35s ease;
 }
 
+/* ── Background Orbs ── */
 .background-orb {
   position: fixed;
   width: 230px;
   height: 230px;
   border-radius: 999px;
-  filter: blur(10px);
   opacity: 0.26;
   animation: float 7s ease-in-out infinite;
   pointer-events: none;
@@ -78,10 +53,11 @@ body {
   right: 8%;
   bottom: 8%;
   background: #fb7185;
-  animation-delay: 1.8s;
   filter: blur(180px);
+  animation-delay: 1.8s;
 }
 
+/* ── App Shell ── */
 .app {
   width: min(100%, 540px);
   padding: 26px;
@@ -93,6 +69,7 @@ body {
   animation: appEntrance 0.7s ease both;
 }
 
+/* ── Header ── */
 .header {
   position: relative;
 }
@@ -123,12 +100,26 @@ body {
   text-transform: uppercase;
 }
 
+/* ── Logo (merged 4 duplicate blocks into one) ── */
 .logo {
   margin: 0;
   padding-right: 52px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2rem, 7vw, 3rem);
-  line-height: 1;
+  font-weight: 800;
   letter-spacing: -0.05em;
+  line-height: 1;
+  color: #c17a3f;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.08);
+}
+
+.logo span {
+  color: #6fa67a;
 }
 
 .subtitle {
@@ -137,6 +128,7 @@ body {
   line-height: 1.6;
 }
 
+/* ── Stats Grid ── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -149,6 +141,11 @@ body {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.56);
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
 }
 
 .stat-num {
@@ -162,6 +159,7 @@ body {
   font-size: 0.82rem;
 }
 
+/* ── Progress ── */
 .progress-info {
   display: flex;
   justify-content: space-between;
@@ -186,6 +184,7 @@ body {
   transition: width 0.45s ease;
 }
 
+/* ── Input Area ── */
 .input-area {
   margin: 24px 0 16px;
   padding: 16px;
@@ -202,6 +201,12 @@ body {
 
 .options-row {
   margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.options-row > select {
+  flex: 1 1 120px;
+  min-width: 0;
 }
 
 input,
@@ -223,6 +228,7 @@ select:focus {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
 }
 
+/* ── Buttons (shared base) ── */
 .add-btn,
 .btn-danger,
 .tab,
@@ -246,6 +252,223 @@ select:focus {
   box-shadow: 0 12px 24px rgba(99, 102, 241, 0.3);
 }
 
+/* ── Date-Time Group ── */
+.date-time-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.date-time-group .date-input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Futuristic Time Picker ── */
+.time-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.time-picker:hover,
+.time-picker.open {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+}
+
+.time-picker.has-time {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.07);
+}
+
+.time-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.time-display {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.time-picker.has-time .time-display {
+  color: var(--primary);
+}
+
+.time-seg {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.time-colon {
+  opacity: 0.5;
+  animation: blink 1.4s step-end infinite;
+}
+
+.time-picker.has-time .time-colon {
+  animation: none;
+  opacity: 1;
+}
+
+/* ── Time Panel (dropdown) ── */
+.time-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: auto;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(31, 41, 55, 0.18);
+  animation: panelIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.time-picker.open .time-panel,
+.date-picker.open .time-panel {
+  display: flex;
+}
+
+.time-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-arrow {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.time-arrow:hover {
+  background: rgba(99, 102, 241, 0.22);
+  transform: scale(1.1);
+}
+
+.time-arrow:active {
+  transform: scale(0.93);
+}
+
+.time-val {
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 1.4rem;
+  font-weight: 900;
+  min-width: 36px;
+  text-align: center;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.time-val.tick {
+  animation: valTick 0.18s ease both;
+}
+
+.panel-colon {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.time-set-btn {
+  padding: 7px 13px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.time-set-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+}
+
+.time-clear-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.time-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+
+/* dark mode adjustments */
+.dark .time-picker {
+  background: rgba(30, 41, 59, 0.74);
+}
+
+.dark .time-panel {
+  background: rgba(15, 23, 42, 0.97);
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.15; }
+}
+
+@keyframes valTick {
+  0%   { transform: translateY(-6px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Search ── */
+.search-wrap {
+  margin: 1rem 0;
+}
+
+/* ── Filter Tabs ── */
 .filter-tabs {
   display: flex;
   gap: 10px;
@@ -269,6 +492,7 @@ select:focus {
   transform: translateY(-1px);
 }
 
+/* ── Task List & Cards ── */
 .task-list {
   display: grid;
   gap: 12px;
@@ -285,15 +509,17 @@ select:focus {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
   animation: taskEnter 0.35s ease both;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .task-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.01);
   box-shadow: 0 14px 28px rgba(31, 41, 55, 0.12);
 }
 
+/* ── Checkbox ── */
 .check-wrap input {
   display: none;
 }
@@ -305,6 +531,11 @@ select:focus {
   height: 24px;
   border: 2px solid var(--primary);
   border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.task-card:hover .custom-check {
+  transform: scale(1.15);
 }
 
 .check-wrap input:checked + .custom-check {
@@ -317,6 +548,7 @@ select:focus {
   font-weight: 900;
 }
 
+/* ── Task Content ── */
 .task-content {
   flex: 1;
   min-width: 0;
@@ -342,6 +574,7 @@ select:focus {
   font-size: 0.78rem;
 }
 
+/* ── Pills ── */
 .priority-pill {
   padding: 5px 9px;
   border-radius: 999px;
@@ -349,19 +582,39 @@ select:focus {
   text-transform: capitalize;
 }
 
-.priority-pill.low {
-  background: rgba(34, 197, 94, 0.13);
-  color: #16a34a;
+.priority-pill.low    { background: rgba(34, 197, 94, 0.13);  color: #16a34a; }
+.priority-pill.medium { background: rgba(245, 158, 11, 0.14); color: #d97706; }
+.priority-pill.high   { background: rgba(239, 68, 68, 0.13);  color: #dc2626; }
+
+.category-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-.priority-pill.medium {
-  background: rgba(245, 158, 11, 0.14);
-  color: #d97706;
+.category-pill.Study    { background: rgba(59, 130, 246, 0.15); }
+.category-pill.Fitness  { background: rgba(34, 197, 94, 0.15);  }
+.category-pill.Work     { background: rgba(249, 115, 22, 0.15); }
+.category-pill.Personal { background: rgba(168, 85, 247, 0.15); }
+.category-pill.Gaming   { background: rgba(239, 68, 68, 0.15);  }
+
+/* ── Task Actions ── */
+.task-actions {
+  display: flex;
+  gap: 8px;
 }
 
-.priority-pill.high {
-  background: rgba(239, 68, 68, 0.13);
-  color: #dc2626;
+.edit-btn,
+.delete-btn {
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.1);
 }
 
 .delete-btn {
@@ -373,18 +626,29 @@ select:focus {
 }
 
 .delete-btn:hover {
-  transform: scale(1.08);
   background: rgba(239, 68, 68, 0.2);
 }
 
+/* ── Search Highlight ── */
+.highlight {
+  background: rgba(255, 220, 100, 0.4);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.search-empty {
+  text-align: center;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+/* ── Empty State ── */
 .empty-state {
   padding: 32px 18px;
   text-align: center;
   color: var(--muted);
-}
-
-.empty-state.hide {
-  display: none;
 }
 
 .empty-icon {
@@ -401,6 +665,7 @@ select:focus {
   margin: 0;
 }
 
+/* ── Footer ── */
 .footer-actions {
   margin-top: 18px;
 }
@@ -419,6 +684,7 @@ select:focus {
   opacity: 0.45;
 }
 
+/* ── Toast ── */
 .toast {
   position: fixed;
   left: 50%;
@@ -439,184 +705,14 @@ select:focus {
   transform: translate(-50%, 0);
 }
 
-.dark {
-  --bg-one: #020617;
-  --bg-two: #111827;
-  --card: rgba(15, 23, 42, 0.84);
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --border: rgba(148, 163, 184, 0.2);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-}
-
-.dark .theme-toggle,
-.dark .stat-card,
-.dark .input-area,
-.dark .task-card,
-.dark input,
-.dark select {
-  background: rgba(30, 41, 59, 0.74);
-}
-
-.dark .toast {
-  background: #f8fafc;
-  color: #111827;
-}
-
-@keyframes appEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes taskEnter {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
-@media (max-width: 560px) {
-  body {
-    padding: 14px;
-    place-items: start center;
-  }
-
-  .app {
-    padding: 20px;
-    border-radius: 24px;
-  }
-
-  .stats-grid,
-  .options-row,
-  .filter-tabs {
-    grid-template-columns: 1fr;
-  }
-
-  .options-row,
-  .input-row,
-  .filter-tabs {
-    flex-direction: column;
-  }
-
-  .add-btn {
-    width: 100%;
-    padding: 14px;
-  }
-}
-.stat-card {
-    transition: transform 0.2s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-4px);
-}
-.task-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.edit-btn,
-.delete-btn {
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.edit-btn:hover,
-.delete-btn:hover {
-    transform: scale(1.1);
-}
-.goal-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.goal-card input {
-    width: 70px;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    padding: 8px;
-    background: rgba(255,255,255,0.08);
-    color: inherit;
-}
-.stat-icon {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-  display: block;
-}
-.edit-input {
-  width: 100%;
-  padding: 8px 10px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  color: inherit;
-  font-size: 1rem;
-  outline: none;
-}
-
-.search-wrap {
-  margin: 1rem 0;
-}
-
-#searchInput {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  outline: none;
-}
-
-#searchInput:focus {
-  border-color: #4caf50;
-}
-.search-empty {
-  text-align: center;
-  margin-top: 1rem;
-  opacity: 0.7;
-  font-size: 0.95rem;
-}
-
-.hide {
-  display: none;
-}
-.highlight {
-  background: rgba(255, 220, 100, 0.4);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
+/* ── Edit Modal ── */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
-
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 1000;
 }
 
@@ -653,55 +749,110 @@ select:focus {
   cursor: pointer;
 }
 
+/* ── Utility ── */
 .hide {
   display: none;
 }
-.category-pill {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-}
-.category-pill {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
+
+/* ── Dark Mode ── */
+.dark {
+  --bg-one: #020617;
+  --bg-two: #111827;
+  --card: rgba(15, 23, 42, 0.84);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --border: rgba(148, 163, 184, 0.2);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
 
-.category-pill.Study {
-  background: rgba(59,130,246,0.15);
+.dark .theme-toggle,
+.dark .stat-card,
+.dark .input-area,
+.dark .task-card,
+.dark input,
+.dark select {
+  background: rgba(30, 41, 59, 0.74);
 }
 
-.category-pill.Fitness {
-  background: rgba(34,197,94,0.15);
+.dark .toast {
+  background: #f8fafc;
+  color: #111827;
 }
 
-.category-pill.Work {
-  background: rgba(249,115,22,0.15);
+/* ── Animations ── */
+@keyframes appEntrance {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.category-pill.Personal {
-  background: rgba(168,85,247,0.15);
+@keyframes taskEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.category-pill.Gaming {
-  background: rgba(239,68,68,0.15);
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
 }
-.task-card {
-  transition: all 0.25s ease;
+
+/* ── Responsive ── */
+@media (max-width: 560px) {
+  body {
+    padding: 14px;
+    place-items: start center;
+  }
+
+  .app {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .options-row,
+  .input-row,
+  .filter-tabs {
+    flex-direction: column;
+  }
+
+  .add-btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
+.date-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.86);
   cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  flex: 1;
 }
 
-.task-card:hover {
-  transform: translateY(-4px) scale(1.01);
+.date-picker:hover,
+.date-picker.open {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
 }
 
-.custom-check {
-  transition: transform 0.2s ease;
+.date-picker.has-date {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.07);
 }
 
-.task-card:hover .custom-check {
-  transform: scale(1.15);
+.date-picker.has-date .time-display {
+  color: var(--primary);
+}
+
+.dark .date-picker {
+  background: rgba(30, 41, 59, 0.74);
 }
