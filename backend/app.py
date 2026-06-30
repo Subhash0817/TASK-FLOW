@@ -1,3 +1,10 @@
+import os
+BASE_DIR = os.path.dirname(__file__)
+
+DB_PATH = os.path.join(
+    BASE_DIR,
+    "tasks.db"
+)
 from flask import Flask, request
 import sqlite3
 app = Flask(__name__)
@@ -12,7 +19,7 @@ def about():
 @app.route("/tasks")
 def get_tasks():
 
-    connection = sqlite3.connect("tasks.db")
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -45,9 +52,8 @@ def add_task():
 
     data = request.get_json()
 
-    connection = sqlite3.connect(
-        "tasks.db"
-    )
+    connection = sqlite3.connect(DB_PATH)
+    
 
     cursor = connection.cursor()
 
@@ -60,7 +66,7 @@ def add_task():
         VALUES(?, ?)
         """,
         (
-            data["title"],
+            data["text"],
             0
         )
     )
@@ -76,7 +82,7 @@ def add_task():
 @app.route("/tasks/<int:task_id>", methods=["DELETE"])
 def delete_task(task_id):
 
-    connection = sqlite3.connect("tasks.db")
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
 
     cursor.execute(
@@ -94,8 +100,11 @@ def delete_task(task_id):
 def update_task(task_id):
 
     data = request.get_json()
+    import os
 
-    connection = sqlite3.connect("tasks.db")
+    print(os.getcwd())
+
+    connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()
 
     cursor.execute(
