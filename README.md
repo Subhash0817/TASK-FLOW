@@ -1,41 +1,83 @@
-# TaskFlow
+# 🚀 TaskFlow
 
-TaskFlow is a modern productivity and task management web application built using HTML, CSS, and JavaScript.
+TaskFlow is a modern productivity and task management web application built using HTML, CSS, JavaScript, Flask, and SQLite. It helps users organize tasks, track daily goals, monitor productivity, and stay consistent with a clean, responsive interface.
 
-## Features
+---
 
-* Add, Edit, and Delete Tasks
-* Daily Goal Tracking
-* Streak System
-* Progress Bar
-* Priority Levels
-* Due Dates
-* Dark Mode
-* Local Storage Persistence
-* Task Filters (All, Active, Completed)
-* Toast Notifications
+## ✨ Features
 
-## Tech Stack
+- ✅ Add, Edit, and Delete Tasks
+- 🌙 Dark Mode
+- 📊 Progress Bar
+- 🔥 Daily Streak Tracking
+- 🎯 Daily Goal Tracking
+- 🏷️ Task Priority Levels
+- 📅 Due Date & Time
+- 🔍 Search Tasks
+- 📂 Task Categories
+- 📱 Responsive Design
+- 🧭 Bottom Navigation (Home, Notifications, Profile)
+- 💾 Local Storage Support
+- ⚙️ Flask + SQLite Backend (In Progress)
 
-* HTML5
-* CSS3
-* JavaScript
-* Local Storage
+---
 
-## Future Plans
+## 🛠️ Tech Stack
 
-* Achievement Badges
-* Browser Notifications
-* Task Categories
-* Analytics Dashboard
-* Python Backend (FastAPI)
-* User Authentication
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-## Screenshot
+### Backend
+- Python
+- Flask
+- SQLite
 
-![TaskFlow Screenshot](<img width="1830" height="976" alt="image" src="https://github.com/user-attachments/assets/cf4f9d7a-482d-4b0d-8e75-2f9e7542f8c0" />)
+---
 
+## 📸 Screenshot
 
-## Author
+> Replace this with your GitHub image link after uploading the screenshot.
 
-Subhash
+![TaskFlow Screenshot]((image.png))
+
+---
+
+## 🚧 Upcoming Features
+
+- 👤 User Login & Sign Up
+- 🔐 User Authentication
+- 🔔 Smart Notifications
+- 📅 Calendar View
+- 🤖 AI Task Assistant
+- 🎤 Voice Commands
+- ☁️ Cloud Database
+- 📈 Analytics Dashboard
+
+---
+
+## 📅 Development Journey
+
+### Day 43
+- Added responsive mobile layout
+- Added bottom navigation
+- Created Home, Notifications, and Profile pages
+- Improved mobile responsiveness
+- Prepared the frontend for backend integration
+
+---
+
+## 🎯 Project Status
+
+🚧 Currently under active development.
+
+The next milestone is connecting the frontend with the Flask backend so all task operations use the SQLite database instead of Local Storage.
+
+---
+
+## 👨‍💻 Author
+
+**Subhash**
+
+GitHub: https://github.com/Subhash0817
