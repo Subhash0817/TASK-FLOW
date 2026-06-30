@@ -40,8 +40,13 @@ TaskFlow is a modern productivity and task management web application built usin
 
 > Replace this with your GitHub image link after uploading the screenshot.
 
-![TaskFlow Screenshot]((image.png))
+# Home
 
+![TaskFlow Screenshot](TASKFLOW-home.png)
+
+# Darkmode
+
+![TaskFlow Screenshot](TASKFLOW-darkmode.png)
 ---
 
 ## 🚧 Upcoming Features
