@@ -1,14 +1,16 @@
+from flask_cors import CORS
 import os
+
 BASE_DIR = os.path.dirname(__file__)
 
-DB_PATH = os.path.join(
-    BASE_DIR,
-    "tasks.db"
-)
+DB_PATH = os.path.join(BASE_DIR, "tasks.db")
+
+print("Database Path:", DB_PATH)
+
 from flask import Flask, request
 import sqlite3
 app = Flask(__name__)
-
+CORS(app)
 @app.route("/")
 def home():
     return "Hello TaskFlow Backend!"
@@ -108,16 +110,17 @@ def update_task(task_id):
     cursor = connection.cursor()
 
     cursor.execute(
-        """
-        UPDATE tasks
-        SET title = ?
-        WHERE id = ?
-        """,
-        (
-            data["title"],
-            task_id
-        )
+    """
+    UPDATE tasks
+    SET title = ?, completed = ?
+    WHERE id = ?
+    """,
+    (
+        data["title"],
+        data["completed"],
+        task_id
     )
+)
 
     connection.commit()
     connection.close()

@@ -128,13 +128,44 @@ function createTaskEl(task) {
   }
 
   const cb = li.querySelector("input[type='checkbox']");
-  cb.addEventListener("change", () => {
+
+cb.addEventListener("change", async () => {
+
+    const response = await fetch(
+        `http://127.0.0.1:5000/tasks/${task.id}`,
+        {
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                title: task.text,
+                completed: cb.checked ? 1 : 0
+            })
+        }
+    );
+
+    if (!response.ok) {
+        showToast("Couldn't update task ❌");
+        return;
+    }
+
     task.completed = cb.checked;
-    saveTasks();
-    if (task.completed) checkStreak();
-    renderTasks();
-    showToast(task.completed ? "Task completed ✅" : "Marked active");
-  });
+
+    if (task.completed)
+        checkStreak();
+
+    await loadTasks();
+
+    showToast(
+        task.completed
+            ? "Task completed ✅"
+            : "Marked active"
+    );
+
+});
 
   li.querySelector(".edit-btn").addEventListener("click", () => {
     editingTask = task;
@@ -143,14 +174,69 @@ function createTaskEl(task) {
     editInput.focus();
   });
 
-  li.querySelector(".delete-btn").addEventListener("click", () => {
-    tasks = tasks.filter(t => t.id !== task.id);
-    saveTasks(); renderTasks(); showToast("Task deleted");
-  });
+  li.querySelector(".delete-btn").addEventListener("click", async () => {
+
+    const response = await fetch(
+        `http://127.0.0.1:5000/tasks/${task.id}`,
+        {
+            method: "DELETE"
+        }
+    );
+
+    if (!response.ok) {
+        showToast("Couldn't delete task ❌");
+        return;
+    }
+
+    await loadTasks();
+
+    showToast("Task deleted 🗑️");
+
+});
 
   return li;
 }
+async function loadTasks() {
 
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:5000/tasks"
+        );
+
+        const data = await response.json();
+
+        tasks = data.tasks.map(task => ({
+
+            id: task.id,
+
+            text: task.title,
+
+            completed: task.completed,
+
+            priority: "medium",
+
+            category: "Personal",
+
+            dueDate: "",
+
+            dueTime: ""
+
+        }));
+
+        renderTasks();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showToast("Couldn't load tasks");
+
+    }
+
+}
 // ── Render ───────────────────────────────────────────────────
 function renderTasks() {
   taskList.innerHTML = "";
@@ -163,18 +249,30 @@ function renderTasks() {
 }
 
 // ── Add Task ─────────────────────────────────────────────────
-function addTask() {
+async function addTask() {
   const text = taskInput.value.trim();
   if (!text) { showToast("Please enter a task ✏️"); taskInput.focus(); return; }
-  tasks.unshift({
-    id: Date.now(), text,
-    priority: priorityInput.value,
-    category: categoryInput.value,
-    dueDate: dueDateInput.value,
-    dueTime: dueTimeInput.value,
-    completed: false
-  });
-  saveTasks(); renderTasks();
+ const response = await fetch(
+  "http://127.0.0.1:5000/tasks",
+  {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      text: text
+    })
+  }
+);
+
+if (!response.ok) {
+  showToast("Couldn't save task ❌");
+  return;
+}
+
+await loadTasks();
   taskInput.value = ""; dueDateInput.value = "";
   taskInput.focus();
   showToast("Task added ✅");
@@ -212,16 +310,39 @@ tabs.forEach(tab => tab.addEventListener("click", () => {
 dailyGoalInput.addEventListener("change", saveGoal);
 searchInput.addEventListener("input", () => { searchText = searchInput.value; renderTasks(); });
 
-$("saveEdit").addEventListener("click", () => {
-  const updated = editInput.value.trim();
-  if (!updated) return;
-  editingTask.text = updated;
-  saveTasks(); renderTasks();
-  editModal.classList.add("hide");
-  showToast("Task updated");
-});
+$("saveEdit").addEventListener("click", async () => {
 
-$("cancelEdit").addEventListener("click", () => editModal.classList.add("hide"));
+  const updated = editInput.value.trim();
+
+  if (!updated) return;
+
+  const response = await fetch(
+    `http://127.0.0.1:5000/tasks/${editingTask.id}`,
+    {
+      method: "PUT",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        title: updated
+      })
+    }
+  );
+
+  if (!response.ok) {
+    showToast("Couldn't update task ❌");
+    return;
+  }
+
+  await loadTasks();
+
+  editModal.classList.add("hide");
+
+  showToast("Task updated ✏️");
+
+});
 
 // ── Bottom Nav ───────────────────────────────────────────────
 const pages   = { home: homePage, notifications: notificationsPage, profile: profilePage };
@@ -326,4 +447,4 @@ navBtns.forEach(btn => btn.addEventListener("click", () => {
 // ── Init ─────────────────────────────────────────────────────
 loadTheme();
 loadGoal();
-renderTasks();
+loadTasks();

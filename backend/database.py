@@ -1,20 +1,17 @@
 import sqlite3
 
-connection = sqlite3.connect(
-    "tasks.db"
-)
-
+connection = sqlite3.connect("tasks.db")
 cursor = connection.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS tasks(
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    completed INTEGER
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    completed INTEGER NOT NULL
 )
 """)
 
 connection.commit()
 connection.close()
 
-print("Database Created!")
+print("Database created successfully!")
