@@ -1,5 +1,5 @@
 // ── State ──────────────────────────────────────────────────
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = [];
 let currentFilter = "all";
 let editingTask = null;
 let searchText = "";
@@ -33,7 +33,7 @@ const notificationsPage = $("notificationsPage");
 const profilePage    = $("profilePage");
 
 // ── Persistence ─────────────────────────────────────────────
-const saveTasks  = () => localStorage.setItem("tasks", JSON.stringify(tasks));
+
 const saveGoal   = () => localStorage.setItem("dailyGoal", dailyGoalInput.value);
 const loadGoal   = () => { const g = localStorage.getItem("dailyGoal"); if (g) dailyGoalInput.value = g; };
 const saveStreak = v  => localStorage.setItem("streak", v);
@@ -130,7 +130,7 @@ function createTaskEl(task) {
   const cb = li.querySelector("input[type='checkbox']");
 
 cb.addEventListener("change", async () => {
-
+console.log("Checkbox event fired");
     const response = await fetch(
         `http://127.0.0.1:5000/tasks/${task.id}`,
         {
@@ -146,7 +146,7 @@ cb.addEventListener("change", async () => {
             })
         }
     );
-
+console.log(await response.json());
     if (!response.ok) {
         showToast("Couldn't update task ❌");
         return;
@@ -297,7 +297,7 @@ taskInput.addEventListener("keydown", e => e.key === "Enter" && addTask());
 
 clearBtn.addEventListener("click", () => {
   if (!tasks.length) return;
-  tasks = []; saveTasks(); renderTasks(); showToast("All tasks cleared");
+  tasks = [];  renderTasks(); showToast("All tasks cleared");
 });
 
 tabs.forEach(tab => tab.addEventListener("click", () => {
