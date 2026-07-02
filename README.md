@@ -18,7 +18,9 @@ TaskFlow is a modern productivity and task management web application built usin
 - 📱 Responsive Design
 - 🧭 Bottom Navigation (Home, Notifications, Profile)
 - 💾 Local Storage Support
-- ⚙️ Flask + SQLite Backend (In Progress)
+- ⚙️ Flask + SQLite Backend 
+
+  
 
 ---
 
@@ -88,6 +90,35 @@ TaskFlow is a modern productivity and task management web application built usin
 - Connect Clear All to backend
 - Remove remaining task-related localStorage
 
+## 📅 Day 45
+
+### 🚀 Progress
+- Connected the frontend with the Flask backend
+- Integrated SQLite database with the frontend
+- Implemented full CRUD operations using REST API
+- Added task creation using POST requests
+- Added task loading using GET requests
+- Added task editing using PUT requests
+- Added task deletion using DELETE requests
+- Added task completion persistence in SQLite
+- Configured CORS for frontend-backend communication
+- Removed task dependency on Local Storage (migration to SQLite)
+
+### 🛠️ Tech Used
+- HTML5
+- CSS3
+- JavaScript (Fetch API)
+- Python
+- Flask
+- SQLite
+
+### 🎯 Next Steps
+- User Authentication (Login & Sign Up)
+- User Profiles
+- Notifications
+- Calendar Integration
+- AI Task Assistant
+- Voice Commands
   
 ## 🎯 Project Status
 
