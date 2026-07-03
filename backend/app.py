@@ -1,6 +1,9 @@
 from flask_cors import CORS
 import os
-
+print("=================================")
+print("RUNNING THIS APP.PY")
+print(__file__)
+print("=================================")
 BASE_DIR = os.path.dirname(__file__)
 
 DB_PATH = os.path.join(BASE_DIR, "tasks.db")
@@ -128,4 +131,45 @@ def update_task(task_id):
     return {
         "message": "Task updated"
     }
+@app.route("/signup", methods=["POST"])
+def signup():
+
+    data = request.get_json()
+
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
+
+    try:
+
+        cursor.execute(
+            """
+            INSERT INTO users
+            (username, email, password)
+            VALUES (?, ?, ?)
+            """,
+            (
+                data["username"],
+                data["email"],
+                data["password"]
+            )
+        )
+
+        connection.commit()
+
+        return {
+            "message": "User created successfully"
+        }, 201
+
+    except sqlite3.IntegrityError:
+
+        return {
+            "message": "Email already exists"
+        }, 400
+
+    finally:
+
+        connection.close()
+@app.route("/test")
+def test():
+    return "Signup route is loaded!"
 app.run()
