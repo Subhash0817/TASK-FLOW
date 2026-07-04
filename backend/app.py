@@ -172,4 +172,5 @@ def signup():
 @app.route("/test")
 def test():
     return "Signup route is loaded!"
+print(app.url_map)
 app.run()
