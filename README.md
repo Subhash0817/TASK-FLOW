@@ -1,26 +1,26 @@
 # 🚀 TaskFlow
 
-TaskFlow is a modern productivity and task management web application built using HTML, CSS, JavaScript, Flask, and SQLite. It helps users organize tasks, track daily goals, monitor productivity, and stay consistent with a clean, responsive interface.
+A modern full-stack productivity and task management web application built with **HTML, CSS, JavaScript, Flask, and SQLite**.
+
+TaskFlow helps users organize daily work, manage tasks, track productivity, and stay consistent through an intuitive and responsive interface.
 
 ---
 
 ## ✨ Features
 
-- ✅ Add, Edit, and Delete Tasks
-- 🌙 Dark Mode
-- 📊 Progress Bar
-- 🔥 Daily Streak Tracking
-- 🎯 Daily Goal Tracking
-- 🏷️ Task Priority Levels
-- 📅 Due Date & Time
-- 🔍 Search Tasks
-- 📂 Task Categories
-- 📱 Responsive Design
-- 🧭 Bottom Navigation (Home, Notifications, Profile)
-- 💾 Local Storage Support
-- ⚙️ Flask + SQLite Backend 
-
-  
+- ✅ Task Management (Create, Edit, Delete)
+- ✅ Task Completion Tracking
+- ✅ Search Tasks
+- ✅ Task Categories
+- ✅ Priority Levels
+- ✅ Due Date & Time
+- ✅ Daily Goal Tracking
+- ✅ Streak System
+- ✅ Progress Dashboard
+- ✅ Dark Mode
+- ✅ Responsive Design
+- ✅ Flask REST API
+- ✅ SQLite Database
 
 ---
 
@@ -38,93 +38,90 @@ TaskFlow is a modern productivity and task management web application built usin
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-> Replace this with your GitHub image link after uploading the screenshot.
+### 🏠 Home
 
-# Home
+![Home](TASKFLOW-home.png)
 
-![TaskFlow Screenshot](TASKFLOW-home.png)
+### 🌙 Dark Mode
 
-# Darkmode
+![Dark Mode](TASKFLOW-darkmode.png)
 
-![TaskFlow Screenshot](TASKFLOW-darkmode.png)
 ---
 
-## 🚧 Upcoming Features
+## 🚧 Currently Working On
 
-- 👤 User Login & Sign Up
 - 🔐 User Authentication
-- 🔔 Smart Notifications
-- 📅 Calendar View
-- 🤖 AI Task Assistant
-- 🎤 Voice Commands
-- ☁️ Cloud Database
-- 📈 Analytics Dashboard
+- 👤 Login & Sign Up
+- 👥 User-specific Tasks
+- 🚪 Logout System
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Responsive UI
+- [x] Flask Backend
+- [x] SQLite Database
+- [x] Full CRUD Operations
+- [x] REST API Integration
+- [x] Authentication APIs
+- [ ] Login & Signup Integration
+- [ ] User Sessions
+- [ ] Notifications
+- [ ] Calendar
+- [ ] AI Assistant
+- [ ] Cloud Deployment
 
 ---
 
 ## 📅 Development Journey
 
 ### Day 43
-- Added responsive mobile layout
-- Added bottom navigation
-- Created Home, Notifications, and Profile pages
-- Improved mobile responsiveness
-- Prepared the frontend for backend integration
+- Responsive mobile layout
+- Bottom navigation
+- Home, Notifications & Profile pages
+
+### Day 44
+- Connected frontend with Flask backend
+- REST API integration
+- SQLite integration
+- Fixed database path issues
+- Configured CORS
+
+### Day 45
+- Completed full CRUD integration
+- Migrated task storage from Local Storage to SQLite
+- Implemented GET, POST, PUT & DELETE APIs
+- Improved frontend-backend communication
+
+### Day 46
+- Added Users table
+- Started authentication backend
+- Authentication testing scripts
+
+### Day 47
+- Implemented Signup API
+- Implemented Login API
+- Successfully tested authentication endpoints
+
+### Day 48
+- Designed Authentication UI
+- Added Login Screen
+- Prepared Dashboard for authentication flow
+- Ready to connect frontend login with backend
 
 ---
-## 📅 Day 44
 
-### 🚀 Progress
-- Connected frontend with Flask backend
-- Implemented REST API integration
-- Added task creation using SQLite
-- Added task editing using SQLite
-- Added task deletion using SQLite
-- Fixed database path issues
-- Configured CORS for frontend-backend communication
+## 📊 Project Status
 
-### 🔜 Next Steps
-- Save task completion status in SQLite
-- Connect Clear All to backend
-- Remove remaining task-related localStorage
+🚧 **Active Development**
 
-## 📅 Day 45
-
-### 🚀 Progress
-- Connected the frontend with the Flask backend
-- Integrated SQLite database with the frontend
-- Implemented full CRUD operations using REST API
-- Added task creation using POST requests
-- Added task loading using GET requests
-- Added task editing using PUT requests
-- Added task deletion using DELETE requests
-- Added task completion persistence in SQLite
-- Configured CORS for frontend-backend communication
-- Removed task dependency on Local Storage (migration to SQLite)
-
-### 🛠️ Tech Used
-- HTML5
-- CSS3
-- JavaScript (Fetch API)
-- Python
-- Flask
-- SQLite
-
-### 🎯 Next Steps
-- User Authentication (Login & Sign Up)
-- User Profiles
-- Notifications
-- Calendar Integration
-- AI Task Assistant
-- Voice Commands
-  
-## 🎯 Project Status
-
-🚧 Currently under active development.
-
-The next milestone is connecting the frontend with the Flask backend so all task operations use the SQLite database instead of Local Storage.
+Current Focus:
+- Connecting Login UI to Flask
+- User Sessions
+- User-specific Task Management
 
 ---
 
@@ -132,4 +129,5 @@ The next milestone is connecting the frontend with the Flask backend so all task
 
 **Subhash**
 
-GitHub: https://github.com/Subhash0817
+GitHub:
+https://github.com/Subhash0817
