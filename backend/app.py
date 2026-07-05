@@ -173,4 +173,42 @@ def signup():
 def test():
     return "Signup route is loaded!"
 print(app.url_map)
+
+@app.route("/login", methods=["POST"])
+def login():
+
+    data = request.get_json()
+
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        SELECT id, username, email
+        FROM users
+        WHERE email = ? AND password = ?
+        """,
+        (
+            data["email"],
+            data["password"]
+        )
+    )
+
+    user = cursor.fetchone()
+
+    connection.close()
+
+    if user:
+        return {
+            "message": "Login successful",
+            "user": {
+                "id": user[0],
+                "username": user[1],
+                "email": user[2]
+            }
+        }, 200
+
+    return {
+        "message": "Invalid email or password"
+    }, 401
 app.run()

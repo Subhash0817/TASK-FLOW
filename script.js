@@ -447,4 +447,45 @@ navBtns.forEach(btn => btn.addEventListener("click", () => {
 // ── Init ─────────────────────────────────────────────────────
 loadTheme();
 loadGoal();
-loadTasks();
+//loadTasks();
+const authScreen = $("authScreen");
+const dashboard = $("dashboard");
+const loginBtn = $("loginBtn");
+
+loginBtn.addEventListener("click", async () => {
+
+    const email = $("loginEmail").value;
+    const password = $("loginPassword").value;
+
+    const response = await fetch(
+        "http://127.0.0.1:5000/login",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+
+        showToast("Welcome " + data.user.username + " 🎉");
+
+        authScreen.classList.add("hide");
+        dashboard.classList.remove("hide");
+        await loadTasks();
+    } else {
+
+        showToast(data.message);
+
+    }
+
+});

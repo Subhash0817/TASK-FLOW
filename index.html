@@ -12,6 +12,45 @@
 <body>
   <div class="background-orb orb-one"></div>
   <div class="background-orb orb-two"></div>
+  <div id="authScreen">
+
+<div class="auth-card">
+
+  <h1 class="auth-logo">🚀 TaskFlow</h1>
+
+  <p class="auth-subtitle">
+    Welcome back! Login to continue.
+  </p>
+
+  <input
+    type="email"
+    id="loginEmail"
+    placeholder="Email"
+  >
+
+  <input
+    type="password"
+    id="loginPassword"
+    placeholder="Password"
+  >
+
+  <button
+    id="loginBtn"
+    class="add-btn"
+  >
+    Login
+  </button>
+
+  <p class="switch-auth">
+    Don't have an account?
+
+    <a href="#" id="showSignup">
+      Sign Up
+    </a>
+  </p>
+
+</div>
+<div id="dashboard" class="hide">
 
   <main class="app" aria-label="Task Flow">
     <header class="header">
@@ -207,6 +246,7 @@
   </button>
 
 </nav>
+</div>
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite">Task added</div>
