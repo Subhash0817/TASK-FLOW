@@ -443,10 +443,37 @@ navBtns.forEach(btn => btn.addEventListener("click", () => {
 
   document.addEventListener("click", e => { if (!picker.contains(e.target)) closePanel(); });
 })();
+const logoutBtn = $("logoutBtn");
 
+logoutBtn.addEventListener("click", () => {
+
+    localStorage.removeItem("currentUser");
+
+    dashboard.classList.add("hide");
+
+    authScreen.classList.remove("hide");
+
+    $("loginPassword").value = "";
+
+    showToast("Logged out 👋");
+
+});
 // ── Init ─────────────────────────────────────────────────────
 loadTheme();
 loadGoal();
+const currentUser = JSON.parse(
+    localStorage.getItem("currentUser")
+);
+
+if (currentUser) {
+
+    authScreen.classList.add("hide");
+
+    dashboard.classList.remove("hide");
+
+    loadTasks();
+
+}
 //loadTasks();
 const authScreen = $("authScreen");
 const dashboard = $("dashboard");
@@ -477,13 +504,24 @@ loginBtn.addEventListener("click", async () => {
 
     if (response.ok) {
 
-        showToast("Welcome " + data.user.username + " 🎉");
+    console.log("LOGIN SUCCESS");
 
-        authScreen.classList.add("hide");
-        dashboard.classList.remove("hide");
-        await loadTasks();
-    } else {
+    showToast("Welcome " + data.user.username + " 🎉");
 
+    authScreen.classList.add("hide");
+
+    dashboard.classList.remove("hide");
+
+    console.log("Dashboard classes:", dashboard.className);
+
+    await loadTasks();
+
+    console.log("Finished loading tasks");
+} else {
+localStorage.setItem(
+    "currentUser",
+    JSON.stringify(data.user)
+);
         showToast(data.message);
 
     }
