@@ -345,15 +345,39 @@ $("saveEdit").addEventListener("click", async () => {
 });
 
 // ── Bottom Nav ───────────────────────────────────────────────
-const pages   = { home: homePage, notifications: notificationsPage, profile: profilePage };
+const pages = {
+    home: $("homePage"),
+    notifications: $("notificationsPage"),
+    profile: $("profilePage")
+};
+
 const navBtns = document.querySelectorAll(".nav-btn");
 
-navBtns.forEach(btn => btn.addEventListener("click", () => {
-  Object.values(pages).forEach(p => p.classList.add("hide"));
-  navBtns.forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  pages[btn.dataset.page]?.classList.remove("hide");
-}));
+navBtns.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        // Hide every page
+        Object.values(pages).forEach(page => {
+            page.classList.add("hide");
+        });
+
+        // Remove active state
+        navBtns.forEach(button => {
+            button.classList.remove("active");
+        });
+
+        // Show selected page
+        pages[btn.dataset.page].classList.remove("hide");
+
+      btn.classList.add("active");
+
+        // Highlight current button
+        btn.classList.add("active");
+
+    });
+
+});
 
 // ── Custom Time Picker ────────────────────────────────────────
 (function () {
@@ -502,9 +526,14 @@ loginBtn.addEventListener("click", async () => {
 
     const data = await response.json();
 
-    if (response.ok) {
+  if (response.ok) {
 
     console.log("LOGIN SUCCESS");
+
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(data.user)
+    );
 
     showToast("Welcome " + data.user.username + " 🎉");
 
@@ -512,18 +541,15 @@ loginBtn.addEventListener("click", async () => {
 
     dashboard.classList.remove("hide");
 
-    console.log("Dashboard classes:", dashboard.className);
-
     await loadTasks();
 
     console.log("Finished loading tasks");
-} else {
-localStorage.setItem(
-    "currentUser",
-    JSON.stringify(data.user)
-);
-        showToast(data.message);
 
-    }
+  }
+  else {
+
+    showToast(data.message);
+
+}
 
 });
