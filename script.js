@@ -485,9 +485,13 @@ logoutBtn.addEventListener("click", () => {
 // ── Init ─────────────────────────────────────────────────────
 loadTheme();
 loadGoal();
-const currentUser = JSON.parse(
-    localStorage.getItem("currentUser")
-);
+const savedUser = localStorage.getItem("currentUser");
+
+let currentUser = null;
+
+if (savedUser && savedUser !== "undefined") {
+    currentUser = JSON.parse(savedUser);
+}
 
 if (currentUser) {
 
