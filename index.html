@@ -1,272 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Flow</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <div class="background-orb orb-one"></div>
-  <div class="background-orb orb-two"></div>
-  <div id="authScreen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Flow</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+    <div id="authScreen">
+      <div class="auth-card">
+        <h1 class="auth-logo">🚀 TaskFlow</h1>
 
-<div class="auth-card">
+        <p class="auth-subtitle">Welcome back! Login to continue.</p>
 
-  <h1 class="auth-logo">🚀 TaskFlow</h1>
+        <input type="email" id="loginEmail" placeholder="Email" />
 
-  <p class="auth-subtitle">
-    Welcome back! Login to continue.
-  </p>
+        <input type="password" id="loginPassword" placeholder="Password" />
 
-  <input
-    type="email"
-    id="loginEmail"
-    placeholder="Email"
-  >
+        <button id="loginBtn" class="add-btn">Login</button>
 
-  <input
-    type="password"
-    id="loginPassword"
-    placeholder="Password"
-  >
+        <p class="switch-auth">
+          Don't have an account?
 
-  <button
-    id="loginBtn"
-    class="add-btn"
-  >
-    Login
-  </button>
-
-  <p class="switch-auth">
-    Don't have an account?
-
-    <a href="#" id="showSignup">
-      Sign Up
-    </a>
-  </p>
-</div>
-</div>
-<div id="dashboard" class="hide">
-
-  <main class="app" aria-label="Task Flow">
-    <header class="header">
-      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Toggle dark mode">
-        <span class="theme-icon">🌙</span>
-      </button>
-<button id="logoutBtn">
-    Logout
-</button>
-      <div class="title-area">
-        <p class="eyebrow">Daily productivity</p>
-        <h1 class="logo">Task<span>Flow</span></h1>
-        <p class="subtitle">Organize tasks. Stay focused. Build momentum.</p>
+          <a href="#" id="showSignup"> Sign Up </a>
+        </p>
       </div>
-      <div id="homePage">
-      <section class="stats-grid" aria-label="Task statistics">
-        <div class="stat-card">
-          <span id="taskCount" class="stat-num">0</span>
-          <span class="stat-label">📋 Total</span>
-        </div>
-        <div class="stat-card">
-          <span id="completedCount" class="stat-num">0</span>
-          <span class="stat-label">✅ Done</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">🎯 Goal</span>
-          <input type="number" id="dailyGoal" class="goal-input" value="3" min="1" />
-        </div>
-        <div class="stat-card">
-          <span id="streakCount" class="stat-num">0</span>
-          <span class="stat-label">🔥 Streak</span>
-        </div>
-      </section>
+    </div>
+    <div id="dashboard" class="hide">
+      <main class="app" aria-label="Task Flow">
+        <header class="header">
+          <button id="themeBtn" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <button id="logoutBtn">Logout</button>
+          <div class="title-area">
+            <p class="eyebrow">Daily productivity</p>
+            <h1 class="logo">Task<span>Flow</span></h1>
+            <p class="subtitle">Organize tasks. Stay focused. Build momentum.</p>
+          </div>
+        </header>
 
-      <div class="progress-wrap">
-        <div class="progress-info">
-          <span>Progress</span>
-          <span id="progressText">0%</span>
-        </div>
-        <div class="progress-bar" aria-hidden="true">
-          <div id="progressBar" class="progress-fill"></div>
-        </div>
-      </div>
-    </header>
-
-    <section class="input-area" aria-label="Add task form">
-      <div class="input-row">
-        <input type="text" id="taskInput" placeholder="Enter the task..." autocomplete="off" />
-        <button id="addBtn" class="add-btn" type="button">+ Add</button>
-      </div>
-      <div class="options-row">
-        <select id="priority" class="priority-select" aria-label="Select priority">
-          <option value="low">Low Priority</option>
-          <option value="medium">Medium Priority</option>
-          <option value="high">High Priority</option>
-        </select>
-        <select id="category" class="priority-select" aria-label="Select category">
-          <option value="Study">📚 Study</option>
-          <option value="Work">💼 Work</option>
-          <option value="Personal">🏠 Personal</option>
-          <option value="Fitness">💪 Fitness</option>
-          <option value="Gaming">🎮 Gaming</option>
-        </select>
-        <div class="date-time-group">
-          <div class="date-picker" id="datePicker" aria-label="Choose due date">
-  <span class="time-icon">📅</span>
-  <div class="time-display" id="dateDisplay">
-    <span class="time-seg" id="dateDay">--</span>
-    <span class="time-colon">/</span>
-    <span class="time-seg" id="dateMonth">--</span>
-    <span class="time-colon">/</span>
-    <span class="time-seg" id="dateYear">----</span>
-  </div>
-  <div class="time-panel" id="datePanel">
-    <div class="time-col">
-      <button class="time-arrow" data-unit="day" data-dir="up">▲</button>
-      <span class="time-val" id="panelDay">01</span>
-      <button class="time-arrow" data-unit="day" data-dir="down">▼</button>
-    </div>
-    <span class="panel-colon">/</span>
-    <div class="time-col">
-      <button class="time-arrow" data-unit="month" data-dir="up">▲</button>
-      <span class="time-val" id="panelMonth">01</span>
-      <button class="time-arrow" data-unit="month" data-dir="down">▼</button>
-    </div>
-    <span class="panel-colon">/</span>
-    <div class="time-col">
-      <button class="time-arrow" data-unit="year" data-dir="up">▲</button>
-      <span class="time-val" id="panelYear" style="min-width:52px;font-size:1.1rem">2026</span>
-      <button class="time-arrow" data-unit="year" data-dir="down">▼</button>
-    </div>
-    <button class="time-set-btn" id="dateSetBtn">Set</button>
-    <button class="time-clear-btn" id="dateClearBtn">✕</button>
-  </div>
-  <input type="hidden" id="dueDate" />
-</div>
-          <!-- Custom futuristic time picker -->
-          <div class="time-picker" id="timePicker" aria-label="Choose due time">
-            <span class="time-icon">🕒</span>
-            <div class="time-display" id="timeDisplay">
-              <span class="time-seg" id="timeHour">--</span>
-              <span class="time-colon">:</span>
-              <span class="time-seg" id="timeMinute">--</span>
+        <div id="homePage">
+          <section class="stats-grid" aria-label="Task statistics">
+            <div class="stat-card">
+              <span id="taskCount" class="stat-num">0</span>
+              <span class="stat-label">📋 Total</span>
             </div>
-            <div class="time-panel" id="timePanel">
-              <div class="time-col">
-                <button class="time-arrow" data-unit="hour" data-dir="up">▲</button>
-                <span class="time-val" id="panelHour">12</span>
-                <button class="time-arrow" data-unit="hour" data-dir="down">▼</button>
-              </div>
-              <span class="panel-colon">:</span>
-              <div class="time-col">
-                <button class="time-arrow" data-unit="minute" data-dir="up">▲</button>
-                <span class="time-val" id="panelMinute">00</span>
-                <button class="time-arrow" data-unit="minute" data-dir="down">▼</button>
-              </div>
-              <button class="time-set-btn" id="timeSetBtn">Set</button>
-              <button class="time-clear-btn" id="timeClearBtn">✕</button>
+            <div class="stat-card">
+              <span id="completedCount" class="stat-num">0</span>
+              <span class="stat-label">✅ Done</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">🎯 Goal</span>
+              <input type="number" id="dailyGoal" class="goal-input" value="3" min="1" />
+            </div>
+            <div class="stat-card">
+              <span id="streakCount" class="stat-num">0</span>
+              <span class="stat-label">🔥 Streak</span>
+            </div>
+          </section>
+
+          <div class="progress-wrap">
+            <div class="progress-info">
+              <span>Progress</span>
+              <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar" aria-hidden="true">
+              <div id="progressBar" class="progress-fill"></div>
             </div>
           </div>
-          <input type="hidden" id="due-time" />
+
+          <section class="input-area" aria-label="Add task form">
+            <div class="input-row">
+              <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter the task..."
+                autocomplete="off"
+              />
+              <button id="addBtn" class="add-btn" type="button">+ Add</button>
+            </div>
+            <div class="options-row">
+              <select id="priority" class="priority-select" aria-label="Select priority">
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+              </select>
+              <select id="category" class="priority-select" aria-label="Select category">
+                <option value="Study">📚 Study</option>
+                <option value="Work">💼 Work</option>
+                <option value="Personal">🏠 Personal</option>
+                <option value="Fitness">💪 Fitness</option>
+                <option value="Gaming">🎮 Gaming</option>
+              </select>
+              <div class="date-time-group">
+                <div class="date-picker" id="datePicker" aria-label="Choose due date">
+                  <span class="time-icon">📅</span>
+                  <div class="time-display" id="dateDisplay">
+                    <span class="time-seg" id="dateDay">--</span>
+                    <span class="time-colon">/</span>
+                    <span class="time-seg" id="dateMonth">--</span>
+                    <span class="time-colon">/</span>
+                    <span class="time-seg" id="dateYear">----</span>
+                  </div>
+                  <div class="time-panel" id="datePanel">
+                    <div class="time-col">
+                      <button class="time-arrow" data-unit="day" data-dir="up">▲</button>
+                      <span class="time-val" id="panelDay">01</span>
+                      <button class="time-arrow" data-unit="day" data-dir="down">▼</button>
+                    </div>
+                    <span class="panel-colon">/</span>
+                    <div class="time-col">
+                      <button class="time-arrow" data-unit="month" data-dir="up">▲</button>
+                      <span class="time-val" id="panelMonth">01</span>
+                      <button class="time-arrow" data-unit="month" data-dir="down">▼</button>
+                    </div>
+                    <span class="panel-colon">/</span>
+                    <div class="time-col">
+                      <button class="time-arrow" data-unit="year" data-dir="up">▲</button>
+                      <span
+                        class="time-val"
+                        id="panelYear"
+                        style="min-width: 52px; font-size: 1.1rem"
+                        >2026</span
+                      >
+                      <button class="time-arrow" data-unit="year" data-dir="down">▼</button>
+                    </div>
+                    <button class="time-set-btn" id="dateSetBtn">Set</button>
+                    <button class="time-clear-btn" id="dateClearBtn">✕</button>
+                  </div>
+                  <input type="hidden" id="dueDate" />
+                </div>
+                <!-- Custom futuristic time picker -->
+                <div class="time-picker" id="timePicker" aria-label="Choose due time">
+                  <span class="time-icon">🕒</span>
+                  <div class="time-display" id="timeDisplay">
+                    <span class="time-seg" id="timeHour">--</span>
+                    <span class="time-colon">:</span>
+                    <span class="time-seg" id="timeMinute">--</span>
+                  </div>
+                  <div class="time-panel" id="timePanel">
+                    <div class="time-col">
+                      <button class="time-arrow" data-unit="hour" data-dir="up">▲</button>
+                      <span class="time-val" id="panelHour">12</span>
+                      <button class="time-arrow" data-unit="hour" data-dir="down">▼</button>
+                    </div>
+                    <span class="panel-colon">:</span>
+                    <div class="time-col">
+                      <button class="time-arrow" data-unit="minute" data-dir="up">▲</button>
+                      <span class="time-val" id="panelMinute">00</span>
+                      <button class="time-arrow" data-unit="minute" data-dir="down">▼</button>
+                    </div>
+                    <button class="time-set-btn" id="timeSetBtn">Set</button>
+                    <button class="time-clear-btn" id="timeClearBtn">✕</button>
+                  </div>
+                </div>
+                <input type="hidden" id="due-time" />
+              </div>
+            </div>
+          </section>
+
+          <div class="search-wrap">
+            <input type="text" id="searchInput" placeholder="🔍 Search tasks..." />
+          </div>
+
+          <nav class="filter-tabs" aria-label="Task filters">
+            <button class="tab active" type="button" data-filter="all">All</button>
+            <button class="tab" type="button" data-filter="active">Active</button>
+            <button class="tab" type="button" data-filter="completed">Completed</button>
+          </nav>
+
+          <ul id="taskList" class="task-list" aria-label="Task list"></ul>
+
+          <p id="searchEmpty" class="search-empty hide">🔍 No matching tasks found</p>
+
+          <section id="emptyState" class="empty-state">
+            <div class="empty-icon">📋</div>
+            <h2>No tasks yet</h2>
+            <p>Add your first task and start organizing your day.</p>
+          </section>
+
+          <footer class="footer-actions">
+            <button id="clearBtn" class="btn-danger" type="button">Clear All</button>
+          </footer>
+        </div>
+
+        <div id="notificationsPage" class="page hide">
+          <h2>🔔 Notifications</h2>
+
+          <div class="empty-state">
+            <div class="empty-icon">🔔</div>
+            <p>No notifications yet</p>
+          </div>
+        </div>
+        <div id="profilePage" class="page hide">
+          <h2>👤 Profile</h2>
+
+          <div class="stat-card">
+            <span id="profileTasks">0</span>
+            <p>Total Tasks</p>
+          </div>
+
+          <div class="stat-card">
+            <span id="profileDone">0</span>
+            <p>Completed Tasks</p>
+          </div>
+
+          <div class="stat-card">
+            <span id="profileStreak">0</span>
+            <p>Current Streak</p>
+          </div>
+        </div>
+        <nav class="bottom-nav">
+          <button class="nav-btn active" data-page="home">
+            🏠
+            <span>Home</span>
+          </button>
+
+          <button class="nav-btn" data-page="notifications">
+            🔔
+            <span>Alerts</span>
+          </button>
+
+          <button class="nav-btn" data-page="profile">
+            👤
+            <span>Profile</span>
+          </button>
+        </nav>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Task added</div>
+
+    <div id="editModal" class="modal hide">
+      <div class="modal-content">
+        <h3>✏️ Edit Task</h3>
+        <input type="text" id="editInput" placeholder="Edit task..." />
+        <div class="modal-buttons">
+          <button id="cancelEdit">Cancel</button>
+          <button id="saveEdit">Save</button>
         </div>
       </div>
-    </section>
-
-    <div class="search-wrap">
-      <input type="text" id="searchInput" placeholder="🔍 Search tasks..." />
     </div>
 
-    <nav class="filter-tabs" aria-label="Task filters">
-      <button class="tab active" type="button" data-filter="all">All</button>
-      <button class="tab" type="button" data-filter="active">Active</button>
-      <button class="tab" type="button" data-filter="completed">Completed</button>
-    </nav>
-
-    <ul id="taskList" class="task-list" aria-label="Task list"></ul>
-
-    <p id="searchEmpty" class="search-empty hide">🔍 No matching tasks found</p>
-
-    <section id="emptyState" class="empty-state">
-      <div class="empty-icon">📋</div>
-      <h2>No tasks yet</h2>
-      <p>Add your first task and start organizing your day.</p>
-    </section>
-
-    <footer class="footer-actions">
-   
-      <button id="clearBtn" class="btn-danger" type="button">Clear All</button>
-    </footer>
-     </div> <!---- close homepage-->
-
-    <div id="notificationsPage" class="page hide">
-
-  <h2>🔔 Notifications</h2>
-
-  <div class="empty-state">
-    <div class="empty-icon">🔔</div>
-    <p>No notifications yet</p>
-  </div>
-
-</div>
-<div id="profilePage" class="page hide">
-
-  <h2>👤 Profile</h2>
-
-  <div class="stat-card">
-    <span id="profileTasks">0</span>
-    <p>Total Tasks</p>
-  </div>
-
-  <div class="stat-card">
-    <span id="profileDone">0</span>
-    <p>Completed Tasks</p>
-  </div>
-
-  <div class="stat-card">
-    <span id="profileStreak">0</span>
-    <p>Current Streak</p>
-  </div>
-
-</div>
-    <nav class="bottom-nav">
-
-  <button class="nav-btn active" data-page="home">
-    🏠
-    <span>Home</span>
-  </button>
-
-  <button class="nav-btn" data-page="notifications">
-    🔔
-    <span>Alerts</span>
-  </button>
-
-  <button class="nav-btn" data-page="profile">
-    👤
-    <span>Profile</span>
-  </button>
-
-</nav>
-
-  </main>
-</div>
-
-  <div id="toast" class="toast" role="status" aria-live="polite">Task added</div>
-
-  <div id="editModal" class="modal hide">
-    <div class="modal-content">
-      <h3>✏️ Edit Task</h3>
-      <input type="text" id="editInput" placeholder="Edit task..." />
-      <div class="modal-buttons">
-        <button id="cancelEdit">Cancel</button>
-        <button id="saveEdit">Save</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
