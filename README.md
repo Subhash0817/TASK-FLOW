@@ -2,43 +2,74 @@
 
 A modern full-stack productivity and task management web application built with **HTML, CSS, JavaScript, Flask, and SQLite**.
 
-TaskFlow helps users organize daily work, manage tasks, track productivity, and stay consistent through an intuitive and responsive interface.
+TaskFlow helps users organize their daily work, manage tasks efficiently, and improve productivity through a clean, responsive, and modern interface.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-- ✅ Task Management (Create, Edit, Delete)
-- ✅ Task Completion Tracking
+### Authentication
+- ✅ User Login
+- ✅ User Logout
+- 🚧 User Signup (UI Ready)
+- ✅ Remember Logged-in User
+
+### Task Management
+- ✅ Create Tasks
+- ✅ Edit Tasks
+- ✅ Delete Tasks
+- ✅ Mark Tasks Complete
 - ✅ Search Tasks
-- ✅ Task Categories
+- ✅ Filter Tasks
+
+### Productivity
+- ✅ Progress Tracker
+- ✅ Daily Goal
+- ✅ Streak Counter
+- ✅ Task Statistics
+
+### Organization
+- ✅ Categories
 - ✅ Priority Levels
-- ✅ Due Date & Time
-- ✅ Daily Goal Tracking
-- ✅ Streak System
-- ✅ Progress Dashboard
-- ✅ Dark Mode
+- ✅ Due Date
+- ✅ Due Time
+
+### User Interface
 - ✅ Responsive Design
-- ✅ Flask REST API
-- ✅ SQLite Database
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
+- ✅ Dark Mode
+- ✅ Bottom Navigation
+- ✅ Home Page
+- ✅ Notifications Page
+- ✅ Profile Page
+- ✅ Toast Notifications
+- ✅ Custom Date Picker
+- ✅ Custom Time Picker
 
 ### Backend
+- ✅ Flask REST API
+- ✅ SQLite Database
+- ✅ Full CRUD Operations
+- ✅ Authentication API
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+
+## Backend
+
 - Python
 - Flask
 - SQLite
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
 ### 🏠 Home
 
@@ -50,33 +81,48 @@ TaskFlow helps users organize daily work, manage tasks, track productivity, and 
 
 ---
 
-## 🚧 Currently Working On
+# 🚧 Current Development
 
-- 🔐 User Authentication
-- 👤 Login & Sign Up
+Currently working on:
+
 - 👥 User-specific Tasks
-- 🚪 Logout System
+- 🔐 User Sessions
+- 🚪 Signup Integration
+- 📊 Analytics Dashboard
 
 ---
 
-## 🗺️ Roadmap
+# 🗺 Roadmap
 
-- [x] Responsive UI
-- [x] Flask Backend
-- [x] SQLite Database
-- [x] Full CRUD Operations
-- [x] REST API Integration
-- [x] Authentication APIs
-- [ ] Login & Signup Integration
-- [ ] User Sessions
-- [ ] Notifications
-- [ ] Calendar
-- [ ] AI Assistant
-- [ ] Cloud Deployment
+## Phase 1 ✅
+
+- Responsive UI
+- Flask Backend
+- SQLite Database
+- Full CRUD
+- REST APIs
+- Login API
+- Logout
+- Frontend Authentication
+
+## Phase 2 🚧
+
+- User-specific Tasks
+- User Sessions
+- Signup Integration
+- Notifications
+
+## Phase 3
+
+- Calendar
+- Analytics Dashboard
+- AI Assistant
+- Voice Commands
+- Cloud Deployment
 
 ---
 
-## 📅 Development Journey
+# 📅 Development Journey
 
 ### Day 43
 - Responsive mobile layout
@@ -87,14 +133,12 @@ TaskFlow helps users organize daily work, manage tasks, track productivity, and 
 - Connected frontend with Flask backend
 - REST API integration
 - SQLite integration
-- Fixed database path issues
 - Configured CORS
 
 ### Day 45
-- Completed full CRUD integration
-- Migrated task storage from Local Storage to SQLite
-- Implemented GET, POST, PUT & DELETE APIs
-- Improved frontend-backend communication
+- Completed CRUD integration
+- Migrated Local Storage to SQLite
+- Connected frontend with backend APIs
 
 ### Day 46
 - Added Users table
@@ -108,26 +152,53 @@ TaskFlow helps users organize daily work, manage tasks, track productivity, and 
 
 ### Day 48
 - Designed Authentication UI
-- Added Login Screen
-- Prepared Dashboard for authentication flow
-- Ready to connect frontend login with backend
+- Created Login Screen
+- Connected frontend with Login API
+- Dashboard authentication flow
+
+### Day 49
+- Implemented auto login
+- Added logout functionality
+- Improved authentication handling
+
+### Day 50
+- Improved page navigation
+- Added Profile page
+- Added Notifications page
+- Enhanced UI interactions
+
+### Day 51
+- Refactored frontend architecture
+- Reorganized HTML structure
+- Improved CSS organization
+- Cleaned JavaScript structure
+- Improved project maintainability
+- Fixed authentication flow
+- Enhanced overall UI
 
 ---
 
-## 📊 Project Status
+# 📊 Current Status
 
-🚧 **Active Development**
+🟢 **Active Development**
 
-Current Focus:
-- Connecting Login UI to Flask
-- User Sessions
+Completed:
+- Authentication
+- CRUD Operations
+- REST APIs
+- Frontend & Backend Integration
+
+Currently Building:
 - User-specific Task Management
 
+Next Milestone:
+- Multi-user TaskFlow
+
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-**Subhash**
+**Bantu Subash**
 
 GitHub:
 https://github.com/Subhash0817
