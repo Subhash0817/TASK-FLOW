@@ -177,7 +177,20 @@ Currently working on:
 - Enhanced overall UI
 
 ---
+# 🎯 What I Learned
 
+During the development of TaskFlow, I learned:
+
+- REST API development using Flask
+- SQLite database operations
+- CRUD architecture
+- Frontend and backend integration
+- User authentication
+- Local storage management
+- Responsive UI design
+- JavaScript DOM manipulation
+- Asynchronous programming with Fetch API
+  
 # 📊 Current Status
 
 🟢 **Active Development**
