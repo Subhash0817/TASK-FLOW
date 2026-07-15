@@ -201,24 +201,58 @@
             <p>No notifications yet</p>
           </div>
         </div>
-        <div id="profilePage" class="page hide">
-          <h2>👤 Profile</h2>
+      <div id="profilePage" class="page hide">
 
-          <div class="stat-card">
-            <span id="profileTasks">0</span>
-            <p>Total Tasks</p>
-          </div>
+    <div class="profile-header">
 
-          <div class="stat-card">
-            <span id="profileDone">0</span>
-            <p>Completed Tasks</p>
-          </div>
-
-          <div class="stat-card">
-            <span id="profileStreak">0</span>
-            <p>Current Streak</p>
-          </div>
+        <div class="profile-avatar" id="profileAvatar">
+            U
         </div>
+
+        <h2 id="profileName">User</h2>
+
+        <p id="profileEmail">Email</p>
+
+    </div>
+
+    <div class="profile-stats">
+
+        <div class="profile-card">
+
+            <span id="profileTasks">0</span>
+
+            <p>📋 Total Tasks</p>
+
+        </div>
+
+        <div class="profile-card">
+
+            <span id="profileDone">0</span>
+
+            <p>✅ Completed</p>
+
+        </div>
+
+        <div class="profile-card">
+
+            <span id="profileStreak">0</span>
+
+            <p>🔥 Streak</p>
+
+        </div>
+
+    </div>
+
+    <button
+        id="logoutBtnProfile"
+        class="btn-danger"
+        type="button">
+
+        🚪 Logout
+
+    </button>
+
+</div>
         <nav class="bottom-nav">
           <button class="nav-btn active" data-page="home">
             🏠

@@ -1000,3 +1000,86 @@ select:focus {
 
   text-decoration: none;
 }
+/* ===== Profile ===== */
+
+.profile-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+
+    color:white;
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+.profile-header h2{
+
+    margin:10px 0 5px;
+
+}
+
+.profile-header p{
+
+    color:var(--muted);
+
+}
+
+.profile-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+}
+
+.profile-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+}
+
+.profile-card span{
+
+    display:block;
+
+    font-size:1.8rem;
+
+    font-weight:800;
+
+}

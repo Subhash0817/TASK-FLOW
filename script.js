@@ -65,7 +65,25 @@ function checkStreak() {
   streakCount.textContent = streak;
   showToast(`🔥 Streak: ${streak}`);
 }
+function loadProfile(){
 
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    if(!user) return;
+
+    $("profileName").textContent = user.username;
+
+    $("profileEmail").textContent = user.email;
+
+    const initials = user.username
+        .split(" ")
+        .map(word => word[0])
+        .join("")
+        .toUpperCase();
+
+    $("profileAvatar").textContent = initials;
+
+}
 // ── Helpers ─────────────────────────────────────────────────
 function showToast(msg) {
   toast.textContent = msg;
@@ -334,7 +352,11 @@ $("saveEdit").addEventListener("click", async () => {
 
   showToast("Task updated ✏️");
 });
+$("logoutBtnProfile").addEventListener("click", () => {
 
+    logoutBtn.click();
+
+});
 // ── Bottom Nav ───────────────────────────────────────────────
 const pages = {
   home: $("homePage"),
@@ -545,6 +567,24 @@ logoutBtn.addEventListener("click", () => {
 
   showToast("Logged out 👋");
 });
+function loadProfile() {
+
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!user) return;
+
+    $("profileName").textContent = user.username;
+    $("profileEmail").textContent = user.email;
+
+    const initials = user.username
+        .split(" ")
+        .map(word => word[0])
+        .join("")
+        .toUpperCase();
+
+    $("profileAvatar").textContent = initials;
+
+}
 // ── Init ─────────────────────────────────────────────────────
 loadTheme();
 loadGoal();
@@ -566,7 +606,9 @@ if (currentUser) {
   dashboard.classList.remove("hide");
 
   loadTasks();
+  loadProfile();
 }
+
 loginBtn.addEventListener("click", async () => {
   const email = $("loginEmail").value;
   const password = $("loginPassword").value;
@@ -601,6 +643,7 @@ loginBtn.addEventListener("click", async () => {
     profilePage.classList.add("hide");
 
     await loadTasks();
+    loadProfile();
 
     console.log("Finished loading tasks");
   } else {
