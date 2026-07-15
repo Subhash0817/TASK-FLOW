@@ -85,10 +85,26 @@ TaskFlow helps users organize their daily work, manage tasks efficiently, and im
 
 Currently working on:
 
-- 👥 User-specific Tasks
+- 👥 User-specific Task Management
 - 🔐 User Sessions
-- 🚪 Signup Integration
+- 🚀 Learning and refactoring the project architecture
 - 📊 Analytics Dashboard
+
+---
+# 📂 Project Structure
+TASKFLOW/
+│
+├── frontend/
+│ ├── index.html
+│ ├── style.css
+│ └── script.js
+│
+├── backend/
+│ ├── app.py
+│ ├── database.py
+│ └── tasks.db
+│
+└── README.md
 
 ---
 
@@ -176,6 +192,13 @@ Currently working on:
 - Fixed authentication flow
 - Enhanced overall UI
 
+### Day 52
+- Enhanced Profile Page
+- Display logged-in user information
+- Added profile avatar with user initials
+- Improved authentication experience
+- Continued UI/UX improvements
+
 ---
 # 🎯 What I Learned
 
@@ -203,9 +226,20 @@ Completed:
 
 Currently Building:
 - User-specific Task Management
+- Project Architecture Understanding
 
 Next Milestone:
 - Multi-user TaskFlow
+
+---
+# 🚀 Future Goals
+
+- Multi-user Task Management
+- Calendar Integration
+- Analytics Dashboard
+- AI Task Assistant
+- Voice Commands
+- Cloud Deployment
 
 ---
 
